@@ -10,14 +10,13 @@ class Solution {
         if(start == s.length()) return 0;
         if(dp[start] != -1) return dp[start];
 
-        int minPart = Integer.MAX_VALUE;
+        int ans = Integer.MAX_VALUE;
         for(int end = start; end < s.length(); end++) {
             if(isPalindrome(s, start, end))  {
-                int partitions = 1 + solve(end + 1, s, dp);
-                minPart = Math.min(minPart, partitions);
+                ans = Math.min(ans, 1 + solve(end + 1, s, dp));
             }
         }
-        return dp[start] = minPart;
+        return dp[start] = ans;
     }
 
     boolean isPalindrome(String s, int i, int j) {
